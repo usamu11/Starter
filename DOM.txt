@@ -1,0 +1,106 @@
+DOM - 1
+    <body>
+        <div id="app">
+            <button onclick="mostraAlerta()">Press me!</button>
+            <button onmouseover="mostraAlerta()">Press me!</button>
+        </div>
+        <script>
+            function mostraAlerta() {
+                alert('Botao foi clicado');
+            }
+        </script>
+    </body>
+
+DOM - 2 
+
+
+    <body>
+        <div id="app">
+            <input type="text" nome="nome" id="nome" class="nome"/>
+            <button class="botao">Adicionar</button>
+        </div>
+        <script>
+            var inputElement = document.getElementById('nome');
+            var inputElement = document.getElementsByTagName('input')[0];
+            var inputElement = document.getElementsByClassName('nome')[0];
+            console.log(inputElement);
+        </script>
+    </body>
+
+
+    <body>
+        <div id="app">
+            <input type="text" name="nome" />
+            <button class="botao">Adicionar</button>
+        </div>
+        <script>
+            var inputElement = document.querySelector('#app input');
+            var inputElement = document.querySelector('input[name=nome]');
+            var inputElement = document.querySelectorAll('input');
+            console.log(inputElement);
+        </script>
+    </body>
+
+
+    <body>
+        <div id="app">
+            <input type="text" name="nome" />
+            <button class="botao">Adicionar</button>
+        </div>
+        <script>
+            var inputElement = document.querySelector('input[name=nome]');
+            var btnElement = document.querySelector('.botao');
+            
+            btnElement.onclick = function() {
+                var text = inputElement.value;
+                alert(text);
+
+            }
+        </script>
+    </body>
+
+    DOM - 3
+
+    <body>
+        <div id="app">
+        
+        </div>
+        <script>
+           var linkElement = document.createElement('a');
+           //linkElement.href('http://rocketseat.com.br');
+           linkElement.setAttribute('href', 'http://rocketseat.com.br');
+           linkElement.setAttribute('title', 'Site Rocketseat');
+           var textElement = document.createTextNode('Acessar site Rocketseat');
+            linkElement.appendChild(textElement);
+
+            var containerElement = document.querySelector('#app');
+            containerElement.appendChild(linkElement);
+        </script>
+    </body> 
+
+    <body>
+        <div id="app">
+            <input id="nome" />
+        </div>
+        <script>
+            var containerElement = document.querySelector('#app');
+ 
+            var inputElement = document.querySelector('#nome');
+            containerElement.removeChild(inputElement);
+        </script>
+    </body>
+
+    DOM - 4
+
+    <body>
+        <div id="app">
+            <div class="box"></div>
+        </div>
+        <script>
+            var boxElement = document.querySelector('.box');
+
+            boxElement.style.width = 100;
+            boxElement.style.height = 100;
+            boxElement.style.backgroundColor = '#f00';
+        </script>
+    </body>
