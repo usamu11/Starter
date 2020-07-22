@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Curso JavaScript</title>
+    </head>
+    <body>
+        <div id="app">
+            <button onclick="Element()">Click me</button>
+        </div>  
+        <script>
+            function Element() {
+                
+            }
+            var createdElement = document.createElement('div');
+            createdElement.style.width = 100;
+            createdElement.style.height = 100;
+            createdElement.style.backgrounColor = '#f00';
+            var containerElement = document.querySelector('#app');
+            containerElement.appendChild(createdElement);
+        </script>
+    </body>
+</html>
+
