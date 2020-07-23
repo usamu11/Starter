@@ -5,53 +5,21 @@
     </head>
     <body>
         <div id="app">
-            <input type="text" name="nome" />
-            <button onclick="adicionar()">Adicionar</button>
-
-            <!--4º exercício:Seguindo o resultado do 
-            exercício anterior adicione um input em tela
-            e um botão como a seguir:
-            <input type="text" name="nome">
-            <button onClick="adicionar()">Adicionar</button>
-            Ao clicar no botão, a função adicionar() deve ser 
-            disparada adicionando um novo item a lista de
-            nomes baseado no nome preenchido no input e 
-            renderizando o novo item em tela juntos 
-            aos demais itens anteriores. 
-            Além disso, o conteúdo do input deve ser 
-            apagado após o clique.-->
-
+            <ul>
+                <li>Fazer café
+                    <a href="#">Excluir</a>
+                </li>
+                <li>Estudar Jacacript
+                    <a href="#">Excluir</a>
+                </li>
+                <li>Acessar comunidade da Rocketseat
+                    <a href="#">Excluir</a>
+                </li>
+            </ul>
+            <input type="text" placeholder="Digite um to-do">
+            <button>Adicionar</button>
         </div>
-        <script>
-            var ulElement = document.createElement('ul');
-            var inputElement = document.querySelector('input');
-            var containerElement = document.querySelector('#app');
-            containerElement.appendChild(ulElement);
-
-            var nomes = ["Diego", "Gabriel", "Lucas"];
-
-            for (var i = 0; i < 3; i++) {
-                var liElement = document.createElement('li');
-                var containerElement = document.querySelector('ul');
-                containerElement.appendChild(liElement);
-                var textElement = document.createTextNode(nomes[i]);
-                liElement.appendChild(textElement);
-            }
-           
-            var inputElement = document.querySelector('input[name=nome]');
-            var btnElement = document.querySelector('button');
-            
-            function adicionar() {   
-                var text = inputElement.value;
-                var liElement = document.createElement('li');
-                var containerElement = document.querySelector('ul');
-                containerElement.appendChild(liElement);
-                var textElement = document.createTextNode(text);
-                liElement.appendChild(textElement);   
-                nomes.push(text); 
-                inputElement.value = '';             
-            }
-        </script>
+        <script src="todos.js"></script>
     </body>
 </html>
 
