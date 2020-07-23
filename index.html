@@ -5,41 +5,32 @@
     </head>
     <body>
         <div id="app">
-            <!--2º exercício: Utilizando o resultado do
-            primeiro desafio, toda vez que o usuário
-            passar o mouse por cima dealgum quadrado
-            troque sua cor para uma cor aleatória gerada
-            pela função getRandomColor-->
+            <!--3º exercício: A partir do seguinte vetor:
+            var nomes = ["Diego", "Gabriel", "Lucas"];
+            Preencha uma lista (<ul>) no HTML com os itens 
+            da seguinte forma: Diegol
+                               Gabriel
+                               Lucas-->
         </div>
         <script>
-            var btnElement = document.createElement('button');
-            var textElement = document.createTextNode('Press me!');
-            btnElement.appendChild(textElement);
+            var ulElement = document.createElement('ul');
 
             var containerElement = document.querySelector('#app');
-            containerElement.appendChild(btnElement);
+            containerElement.appendChild(ulElement);
 
-            function getRandomColor() {
-                var letters = "0123456789ABCDEF";
-                var color = "#";
-                for (var i = 0; i < 6; i++) {
-                    color += letters[Math.floor(Math.random() * 16)];
-                }
-                return color;
+            var nomes = ["Diego", "Gabriel", "Lucas"];
+
+            for (var i = 0; i < 3; i++) {
+                var liElement = document.createElement('li');
+                var containerElement = document.querySelector('ul');
+                containerElement.appendChild(liElement);
+                var textElement = document.createTextNode(nomes[i]);
+                liElement.appendChild(textElement);
             }
+           
+
+
             
-            btnElement.onclick = function() {
-                var newElement = document.createElement('div');
-                containerElement.appendChild(newElement);
-
-                newElement.style.width = 100;
-                newElement.style.height = 100;
-                newElement.style.backgroundColor = '#f00';
-
-                newElement.onmouseover = function() { 
-                    newElement.style.backgroundColor = getRandomColor();
-                }
-            }
 
             
         </script>
