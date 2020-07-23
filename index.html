@@ -5,11 +5,11 @@
     </head>
     <body>
         <div id="app">
-            <!--1º exercício: Crie um botão que ao ser clicado 
-            cria um novo elemento em tela com a forma de um 
-            quadrado vermelho com 100px de altura e largura. 
-            Sempre que o botão for clicado um novo quadrado 
-            deveaparecer na tela.-->
+            <!--2º exercício: Utilizando o resultado do
+            primeiro desafio, toda vez que o usuário
+            passar o mouse por cima dealgum quadrado
+            troque sua cor para uma cor aleatória gerada
+            pela função getRandomColor-->
         </div>
         <script>
             var btnElement = document.createElement('button');
@@ -18,6 +18,15 @@
 
             var containerElement = document.querySelector('#app');
             containerElement.appendChild(btnElement);
+
+            function getRandomColor() {
+                var letters = "0123456789ABCDEF";
+                var color = "#";
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
             
             btnElement.onclick = function() {
                 var newElement = document.createElement('div');
@@ -27,7 +36,12 @@
                 newElement.style.height = 100;
                 newElement.style.backgroundColor = '#f00';
 
+                newElement.onmouseover = function() { 
+                    newElement.style.backgroundColor = getRandomColor();
+                }
             }
+
+            
         </script>
     </body>
 </html>
