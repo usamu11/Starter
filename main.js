@@ -1,11 +1,20 @@
-/*
-**3º exercício**
-A partir do resultado do exemplo anterior adicione um indicador de 
-carregamento em tela no lugar da lista apenas enquanto a requisição 
-estiver acontecendo:
-<li>Carregando...</li>
+/* 
+**2º exercício**
+Crie uma tela com um <input> que deve receber o nome de um usuário no Github. 
+Após digitar o nome do  suário e clicar no botão buscar a aplicação deve buscar 
+pela API do Github (conforme URL abaixo) os dados  e repositórios do usuário e 
+mostrá-los em tela:
+URL de exemplo: https://api.github.com/users/diego3g/repos
+Basta alterar "diego3g" pelo nome do usuário.
+<input type="text" name="user">
+<button onclick="">Adicionar</button>
+Depois de preencher o input e adicionar, a seguinte lista deve aparecer abaixo:
+<ul>
+ <li>repo1</li>
+ <li>repo2</li>
+ <li>repo3</li>
+</ul>
 */
-
 var containerElement = document.querySelector('#app');
 var listElement = document.createElement('ul');
 var inputElement = document.querySelector('#app input');
@@ -27,33 +36,15 @@ function renderRepos(repos) {
     }
 }
 
-function renderLoading() {
-    var loadingText = document.createTextNode('Carregando...');
-    var loadingElement = document.createElement('li');
-
-    loadingElement.appendChild(loadingText);
-    listElement.appendChild(loadingElement);
-}
-
-function renderError() {
-    var errorText = document.createTextNode('404 Error');
-    var errorElement = document.createElement('li');
-
-    errorElement.appendChild(errorText);
-    listElement.appendChild(errorElement);
-}
-
-
 function addRepos() {
     var repoText = inputElement.value;
-    renderLoading();
+    
     axios.get('https://api.github.com/users/' + repoText + '/repos')
     .then(function(response) {
         renderRepos(response.data);
     })
-    .catch(function() {
-        listElement.innerHTML = '';
-        renderError();
+    .catch(function(error) {
+        console.log(error);
     })
     inputElement.value = '';
 
