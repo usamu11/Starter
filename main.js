@@ -1,26 +1,61 @@
-/*1º exercício: Crie uma função que recebe a idade de 
-um usuário e retorna uma Promise que depois de 2 
-segundos retornará se usuário é maior ou não que 18 
-anos. Se o usuário ter mais que 18 anos deidade o 
-resultado deve cair no .then, caso contrário, no .catch
+/*
+**3º exercício**
+A partir do resultado do exemplo anterior adicione um indicador de 
+carregamento em tela no lugar da lista apenas enquanto a requisição 
+estiver acontecendo:
+<li>Carregando...</li>
 */
 
-function checaIdade(idade) {
-    return new Promise(function(resolve, reject) {
-        setTimeout(function () { 
-            if(idade >= 18) {
-                    resolve();
-            } else {
-                reject();
-            }
-        }, 2000)
-    })
+var containerElement = document.querySelector('#app');
+var listElement = document.createElement('ul');
+var inputElement = document.querySelector('#app input');
+
+containerElement.appendChild(listElement);
+
+function renderRepos(repos) {
+    listElement.innerHTML = '';
+
+    for (repo of repos) {
+        var repoText = document.createTextNode(repo.name);
+        var repoElement = document.createElement('li');
+        
+
+        repoElement.appendChild(repoText);
+        listElement.appendChild(repoElement);
+
+        //console.log(repo.data);    
+    }
 }
 
-checaIdade(20)
+function renderLoading() {
+    var loadingText = document.createTextNode('Carregando...');
+    var loadingElement = document.createElement('li');
+
+    loadingElement.appendChild(loadingText);
+    listElement.appendChild(loadingElement);
+}
+
+function renderError() {
+    var errorText = document.createTextNode('404 Error');
+    var errorElement = document.createElement('li');
+
+    errorElement.appendChild(errorText);
+    listElement.appendChild(errorElement);
+}
+
+
+function addRepos() {
+    var repoText = inputElement.value;
+    renderLoading();
+    axios.get('https://api.github.com/users/' + repoText + '/repos')
     .then(function(response) {
-        console.log("Maior que 18");
+        renderRepos(response.data);
     })
-    .catch(function(response) {
-        console.log("Menor que 18");
-    });
+    .catch(function() {
+        listElement.innerHTML = '';
+        renderError();
+    })
+    inputElement.value = '';
+
+}
+
